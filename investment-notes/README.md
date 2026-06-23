@@ -15,7 +15,7 @@
 |------|----------|
 | [01-philosophy-and-discipline.md](./01-philosophy-and-discipline.md) | 纪律的本质、认知三层结构、知识变与不变、亏损复盘 |
 | [02-strategy-and-allocation.md](./02-strategy-and-allocation.md) | 定投沪深300、5%回撤方案、雪球三分法、基金清单分析 |
-| [03-investment-constitution.md](./03-investment-constitution.md) | **个人投资宪法 v1.0**（完整版，含创伤档案、脱敏路线、操作纪律） |
+| [03-investment-constitution.md](./03-investment-constitution.md) | **个人投资宪法 v1.1**（全天候分散、PE+ERP 双信号、2026-06-22 市场快照） |
 | [04-behavioral-finance.md](./04-behavioral-finance.md) | 处置效应、别人恐惧我贪婪、短线/长线逻辑、脱敏路径 |
 | [05-reading-plan.md](./05-reading-plan.md) | 《漫步华尔街》笔记、阅读书单、阅读计划 |
 | [06-case-studies.md](./06-case-studies.md) | 雪球群组案例、实盘分析、平台产品评价 |
@@ -36,7 +36,8 @@
 
 ## 待办事项
 
-- [ ] 填写宪法附录 B 中的个人参数（定投金额 M、扣款日、数据源、签署）
-- [ ] 按宪法脱敏阶段 v1 执行当前配置（债基 85–90%，权益 5–10%）
-- [ ] 继续阅读《投资中最重要的事》（主题式查阅，以写带读）
-- [ ] 6 个月后评估是否进入脱敏第二阶段
+- [ ] 填写宪法附录 B 中的个人参数（定投金额 M、扣款日、签署）
+- [ ] 每月定投日前更新附录 D 市场快照
+- [ ] 当前（2026-06-22）：沪深300 极高估 → 权益 0x，M 归集债基
+- [ ] 独立查询红利/恒生估值，判断是否有独立买入机会
+- [ ] 继续阅读《投资中最重要的事》（主题式查阅）
