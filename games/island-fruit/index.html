@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>岛上采果 · 随机与规矩</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <main class="shell">
+    <header class="top">
+      <p class="brand">Island Fruit</p>
+      <h1>岛上采果</h1>
+      <p class="tagline">天气随机。选择有规矩。结果不一定听话。</p>
+    </header>
+
+    <!-- START SCREEN -->
+    <section id="screen-start" class="panel">
+      <p class="lead">
+        你在一座会变天的岛上采果子。坚果林稳、甜果林晃、传说果偶尔暴富。
+        <strong>选对规矩，不保证这一局好看</strong>——只提高「活得久、少后悔」的概率。
+      </p>
+
+      <div class="field">
+        <label for="seed-input">天气种子（相同种子 = 同一串天气）</label>
+        <div class="row">
+          <input id="seed-input" type="text" maxlength="12" autocomplete="off" />
+          <button type="button" class="btn ghost" id="btn-random-seed">随机</button>
+        </div>
+      </div>
+
+      <fieldset class="strategy-pick">
+        <legend>本局策略</legend>
+        <label class="card-opt">
+          <input type="radio" name="strategy" value="steady" />
+          <span>
+            <strong>全程坚果</strong>
+            <em>稳为主。波动小，终局常常中等。</em>
+          </span>
+        </label>
+        <label class="card-opt">
+          <input type="radio" name="strategy" value="rules" checked />
+          <span>
+            <strong>混合规矩</strong>
+            <em>坚果打底；甜果只在「熟度够」时采。不追传说果。</em>
+          </span>
+        </label>
+        <label class="card-opt">
+          <input type="radio" name="strategy" value="follow" />
+          <span>
+            <strong>跟岛民</strong>
+            <em>听传言、追热点。可能发财，也可能接近破产。</em>
+          </span>
+        </label>
+      </fieldset>
+
+      <button type="button" class="btn primary" id="btn-start">开始 12 岛日</button>
+      <p class="hint">提示：跑完后可用同一天气种子换策略重开，对比「同一运气下」的差别。</p>
+    </section>
+
+    <!-- PLAY SCREEN -->
+    <section id="screen-play" class="panel hidden">
+      <div class="status-bar">
+        <div><span class="k">岛日</span><span id="day-label">1 / 12</span></div>
+        <div><span class="k">背包</span><span id="bag-label">100</span></div>
+        <div><span class="k">策略</span><span id="strat-label">混合规矩</span></div>
+        <div><span class="k">种子</span><span id="seed-label">—</span></div>
+      </div>
+
+      <div class="weather-block" id="weather-block">
+        <div class="weather-icon" id="weather-icon">☁</div>
+        <div>
+          <p class="weather-name" id="weather-name">阴天</p>
+          <p class="weather-desc" id="weather-desc">产量普通，甜果林可能晃一下。</p>
+        </div>
+      </div>
+
+      <div class="plots" id="plots"></div>
+
+      <div id="event-box" class="event-box hidden"></div>
+      <div id="rumor-box" class="rumor-box hidden"></div>
+
+      <div class="actions">
+        <button type="button" class="btn primary" id="btn-next">按策略采摘 →</button>
+        <button type="button" class="btn ghost" id="btn-obey" disabled>听传言改主意</button>
+        <button type="button" class="btn ghost" id="btn-ignore" disabled>不听，守规矩</button>
+      </div>
+
+      <ol class="log" id="log"></ol>
+    </section>
+
+    <!-- END SCREEN -->
+    <section id="screen-end" class="panel hidden">
+      <h2>岛日结束</h2>
+      <div class="scores">
+        <div class="score-card">
+          <p class="k">结果分</p>
+          <p class="big" id="result-score">—</p>
+          <p class="sub" id="result-note">期末果子</p>
+        </div>
+        <div class="score-card">
+          <p class="k">过程分</p>
+          <p class="big" id="process-score">—</p>
+          <p class="sub" id="process-note">有没有守规矩</p>
+        </div>
+      </div>
+      <p class="verdict" id="verdict"></p>
+      <ul class="stats" id="end-stats"></ul>
+      <div class="actions end-actions">
+        <button type="button" class="btn primary" id="btn-replay-same">同一天气 · 换策略</button>
+        <button type="button" class="btn ghost" id="btn-new-seed">新天气 · 再来一局</button>
+      </div>
+      <p class="hint">选对，是让最差情况没那么惨；不是保证每一局都好看。</p>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>
