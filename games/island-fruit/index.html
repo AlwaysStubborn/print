@@ -18,65 +18,69 @@
       <p class="tagline">天气随机。选择有规矩。结果不一定听话。</p>
     </header>
 
-    <!-- START SCREEN -->
     <section id="screen-start" class="panel">
       <p class="lead">
-        你在一座会变天的岛上采果子。坚果林稳、甜果林晃、传说果偶尔暴富。
-        <strong>选对规矩，不保证这一局好看</strong>——只提高「活得久、少后悔」的概率。
+        岛上三片果林：稳的、晃的、偶尔暴富的。
+        <strong>定好采法再出发</strong>——采法对，也不保证这一局好看。
       </p>
 
       <div class="field">
-        <label for="seed-input">天气种子（相同种子 = 同一串天气）</label>
+        <label for="seed-input">天气编号（填一样的 = 同一串晴雨）</label>
         <div class="row">
           <input id="seed-input" type="text" maxlength="12" autocomplete="off" />
-          <button type="button" class="btn ghost" id="btn-random-seed">随机</button>
+          <button type="button" class="btn ghost" id="btn-random-seed">换一个</button>
         </div>
       </div>
 
       <fieldset class="strategy-pick">
-        <legend>本局策略</legend>
+        <legend>本局怎么采</legend>
         <label class="card-opt">
           <input type="radio" name="strategy" value="steady" />
           <span>
             <strong>全程坚果</strong>
-            <em>稳为主。波动小，终局常常中等。</em>
+            <em>只采最稳的。少大起大落，也很少第一。</em>
           </span>
         </label>
         <label class="card-opt">
           <input type="radio" name="strategy" value="rules" checked />
           <span>
             <strong>混合规矩</strong>
-            <em>坚果打底；甜果只在「熟度够」时采。不追传说果。</em>
+            <em>平时坚果；甜果只在「熟度够」时采。不追传说果。</em>
           </span>
         </label>
         <label class="card-opt">
           <input type="radio" name="strategy" value="follow" />
           <span>
             <strong>跟岛民</strong>
-            <em>听传言、追热点。可能发财，也可能接近破产。</em>
+            <em>听传言、追热闹。可能很多，也可能摔得很疼。</em>
           </span>
         </label>
       </fieldset>
 
-      <button type="button" class="btn primary" id="btn-start">开始 12 岛日</button>
-      <p class="hint">提示：跑完后可用同一天气种子换策略重开，对比「同一运气下」的差别。</p>
+      <button type="button" class="btn primary" id="btn-start">开始 12 天</button>
+      <p class="hint">玩完后可用「同一天气 · 换采法」再开一局，对比同一种晴雨下的差别。</p>
     </section>
 
-    <!-- PLAY SCREEN -->
     <section id="screen-play" class="panel hidden">
       <div class="status-bar">
-        <div><span class="k">岛日</span><span id="day-label">1 / 12</span></div>
+        <div><span class="k">第几天</span><span id="day-label">1 / 12</span></div>
         <div><span class="k">背包</span><span id="bag-label">100</span></div>
-        <div><span class="k">策略</span><span id="strat-label">混合规矩</span></div>
-        <div><span class="k">种子</span><span id="seed-label">—</span></div>
+        <div><span class="k">采法</span><span id="strat-label">混合规矩</span></div>
+        <div><span class="k">天气编号</span><span id="seed-label">—</span></div>
       </div>
 
       <div class="weather-block" id="weather-block">
         <div class="weather-icon" id="weather-icon">☁</div>
         <div>
           <p class="weather-name" id="weather-name">阴天</p>
-          <p class="weather-desc" id="weather-desc">产量普通，甜果林可能晃一下。</p>
+          <p class="weather-desc" id="weather-desc">产量普通。</p>
         </div>
+      </div>
+
+      <div id="plan-box" class="plan-box">
+        <p class="plan-title">今天打算</p>
+        <p id="plan-text">—</p>
+        <p id="ripe-text" class="ripe-text"></p>
       </div>
 
       <div class="plots" id="plots"></div>
@@ -85,36 +89,36 @@
       <div id="rumor-box" class="rumor-box hidden"></div>
 
       <div class="actions">
-        <button type="button" class="btn primary" id="btn-next">按策略采摘 →</button>
-        <button type="button" class="btn ghost" id="btn-obey" disabled>听传言改主意</button>
-        <button type="button" class="btn ghost" id="btn-ignore" disabled>不听，守规矩</button>
+        <button type="button" class="btn primary" id="btn-next">确认采摘</button>
+        <button type="button" class="btn ghost" id="btn-obey" disabled>听传言</button>
+        <button type="button" class="btn ghost" id="btn-ignore" disabled>不听</button>
       </div>
 
       <ol class="log" id="log"></ol>
     </section>
 
-    <!-- END SCREEN -->
     <section id="screen-end" class="panel hidden">
-      <h2>岛日结束</h2>
+      <h2>今天收工</h2>
       <div class="scores">
         <div class="score-card">
-          <p class="k">结果分</p>
+          <p class="k">结果（果子）</p>
           <p class="big" id="result-score">—</p>
           <p class="sub" id="result-note">期末果子</p>
         </div>
         <div class="score-card">
-          <p class="k">过程分</p>
+          <p class="k">过程（守规矩）</p>
           <p class="big" id="process-score">—</p>
           <p class="sub" id="process-note">有没有守规矩</p>
         </div>
       </div>
       <p class="verdict" id="verdict"></p>
+      <div id="compare-box" class="compare-box"></div>
       <ul class="stats" id="end-stats"></ul>
       <div class="actions end-actions">
-        <button type="button" class="btn primary" id="btn-replay-same">同一天气 · 换策略</button>
-        <button type="button" class="btn ghost" id="btn-new-seed">新天气 · 再来一局</button>
+        <button type="button" class="btn primary" id="btn-replay-same">同一天气 · 换采法</button>
+        <button type="button" class="btn ghost" id="btn-new-seed">换天气 · 再来</button>
       </div>
-      <p class="hint">选对，是让最差情况没那么惨；不是保证每一局都好看。</p>
+      <p class="hint">果子多不等于采法更稳。同一串晴雨，换一种采法再比一次最清楚。</p>
     </section>
   </main>
 

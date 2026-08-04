@@ -276,6 +276,51 @@ input[type="text"] {
 .plot .delta.neg { color: var(--coral); }
 .plot .delta.zero { color: var(--cloud); }
 
+.plan-box {
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.85rem;
+  background: #fff;
+  border: 1px dashed rgba(47, 93, 74, 0.35);
+  line-height: 1.5;
+}
+
+.plan-title {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(28, 42, 36, 0.55);
+  font-weight: 600;
+}
+
+#plan-text {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.ripe-text {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: rgba(28, 42, 36, 0.72);
+}
+
+.ripe-text.ok { color: var(--moss); font-weight: 600; }
+.ripe-text.no { color: var(--coral); font-weight: 600; }
+
+.compare-box {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  background: #fff8e8;
+  border: 1px solid rgba(200, 150, 60, 0.35);
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.compare-box strong { font-family: var(--font-display); }
+
 .event-box, .rumor-box {
   border-radius: 14px;
   padding: 0.85rem 1rem;
